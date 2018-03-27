@@ -12,6 +12,7 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <link href="css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/style.css" text/css" />
+	<script src="js/Chart.js"></script>
 	<script src="js/script.js"></script>
 	<script type="text/javascript">
 	
@@ -32,10 +33,10 @@
 		$("#menu").load( "menu.html" );
 		
 		$('#thisMonthBal').click(function(){
-			requestData('thisMonth', year + '-' + month + '-00', year + '-' + month + '-' + day);
+			requestData('thisMonth', year + '-' + month + '-01', year + '-' + month + '-' + day);
 		});
 		$('#lastMonthBal').click(function(){
-			requestData('lastMonth', prevYear + '-' + prevMonth + '-00', prevYear + '-' + prevMonth + '-30');
+			requestData('lastMonth', prevYear + '-' + prevMonth + '-01', prevYear + '-' + prevMonth + '-31');
 		});
 		$('#thisYearBal').click(function(){
 			requestData('thisYear', year + '-01-01', year + '-' + month + '-' + day);

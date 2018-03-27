@@ -1,3 +1,40 @@
+<?php
+
+	session_start();
+			
+			
+	if(!isset($_SESSION['logged']))		
+	{
+		header('Location: budzet-domowy');
+		exit();
+	}		
+		
+	require_once "Connect.php";
+	mysqli_report(MYSQLI_REPORT_STRICT);	
+	try
+			{
+				$connection = new mysqli($host, $db_user, $db_password, $db_name);
+
+				if($connection->connect_errno!=0)
+				{
+					throw new Exception(mysqli_connect_errno());
+				}
+				else
+				{
+					$resultCathegories = $connection->query("SELECT CathegoryID, Name FROM inccathegories WHERE UserID = '".$_SESSION['userId']."'");
+					
+					$connection->close();
+				}
+				
+			}
+			
+			catch(Exception $e)
+			{
+				$_SESSION['e_server'] = '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o zalogowanie się w innym terminie.</span>';
+				header('Location: budzet-domowy');
+				exit();
+			}	
+?>
 
 <!DOCTYPE HTML>
 <html lang="pl">
@@ -25,25 +62,48 @@
 	<div style="max-width: 1200px; margin-top: 40px; margin-left: auto; margin-right: auto; padding: 10px;">
 		<div class="container-fluid">
 			<div class="content">
-				<form class="formEdit" action="AddDBInstance.php" method="post" accept-charset="character_set">
+				<form class="formEdit" action="AddIncInstance.php" method="post" accept-charset="character_set">
 				
 					Kwota:
-					<input type="text" name="value" placeholder="..." onfocus="this.placeholder="" onblur="this.placeholder="..."/> PLN<br />
+					<input type="text" name="value" value="<?php if (isset($_SESSION['savedValue'])) { echo $_SESSION['savedValue']; } unset($_SESSION['savedValue']);  ?>" placeholder="..." onfocus="this.placeholder="" onblur="this.placeholder="..."/> PLN<br />
 					
 					Data:
-					<input type="text" name="expenseDate" placeholder="RRRR-MM-DD" onfocus="this.placeholder="" onblur="this.placeholder="RRRR-MM-DD"/> <br /> <!--wstawic tutaj dzisiejsza date - js -->
+					<input type="text" name="expenseDate" value="<?php if (isset($_SESSION['savedDate'])) { echo $_SESSION['savedDate']; } unset($_SESSION['savedDate']);  ?>" placeholder="RRRR-MM-DD" onfocus="this.placeholder="" onblur="this.placeholder="RRRR-MM-DD"/> <br /> <!--wstawic tutaj dzisiejsza date - js -->
 					
 					Kategoria: 
 					<select name="cathegory" class="styled-select">
-						<option value="1">Wynagrodzenie</option>
-						<option value="2">Odsetki bankowe</option>
-						<option value="3">Sprzedaż na allegro</option>
-						<option value="4">Inne</option>
+						<?php
+						if (isset($_SESSION['savedCathegory']))
+						{
+							while($row = mysqli_fetch_array($resultCathegories))
+							{
+								echo '<option value="'.$row['CathegoryID'].'"';
+								if( $_SESSION['savedCathegory'] == $row['CathegoryID'])
+								{ 
+									echo ' selected ';
+								};
+								echo '>'.$row['Name'].'</option>';
+							}
+						} else {
+							while($row = mysqli_fetch_array($resultCathegories))
+							{
+								echo '<option value=" '.$row['CathegoryID'].' "> '.$row['Name'].' </option>';
+							}	
+						}
+						unset($_SESSION['savedCathegory']);		
+						?>
 					</select><br />
 					
 					Komentarz:
-					<input type="text" name="comment" placeholder="opcjonalny" onfocus="this.placeholder="" onblur="this.placeholder="opcjonalny"/> <br />
-					
+					<input type="text" name="comment" value="<?php if (isset($_SESSION['savedComment'])) { echo $_SESSION['savedComment']; } unset($_SESSION['savedComment']);  ?>" placeholder="opcjonalny" onfocus="this.placeholder="" onblur="this.placeholder="opcjonalny"/> <br />
+					<?php
+					if(isset($_SESSION['e_addIncome']))
+					{
+						echo '<div class="error">'.$_SESSION['e_addIncome'].'</div>';
+						unset($_SESSION['e_addIncome']);
+					}
+					else	echo '<br />';
+					?>
 					<input type="submit" Value="Dodaj" name="addToIncomes"> <br />
 					
 				</form>

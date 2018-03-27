@@ -1,3 +1,42 @@
+<?php
+
+	session_start();
+			
+			
+	if(!isset($_SESSION['logged']))		
+	{
+		header('Location: budzet-domowy');
+		exit();
+	}		
+		
+	require_once "Connect.php";
+	mysqli_report(MYSQLI_REPORT_STRICT);	
+	try
+			{
+				$connection = new mysqli($host, $db_user, $db_password, $db_name);
+
+				if($connection->connect_errno!=0)
+				{
+					throw new Exception(mysqli_connect_errno());
+				}
+				else
+				{
+					$resultPayMethods = $connection->query("SELECT PayMetID, Name FROM paymentmethod WHERE UserID = '".$_SESSION['userId']."'");
+					$resultCathegories = $connection->query("SELECT CathegoryID, Name FROM expcathegories WHERE UserID = '".$_SESSION['userId']."'");
+					
+					$connection->close();
+				}
+				
+			}
+			
+			catch(Exception $e)
+			{
+				$_SESSION['e_server'] = '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o zalogowanie się w innym terminie.</span>';
+				header('Location: budzet-domowy');
+				exit();
+			}	
+?>
+
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
@@ -24,45 +63,73 @@
 	<div style="max-width: 1200px; margin-top: 40px; margin-left: auto; margin-right: auto; padding: 10px;">
 		<div class="container-fluid">
 			<div class="content">
-				<form class="formEdit" action="AddDBInstance.php" method="post" accept-charset="character_set">
+				<form class="formEdit" action="AddExpInstance.php" method="post" accept-charset="character_set">
 		
 					Kwota:
-					<input type="text" name="value" placeholder="..." onfocus="this.placeholder="" onblur="this.placeholder="..."/> PLN<br />
+					<input type="text" name="value" value="<?php if (isset($_SESSION['savedValue'])) { echo $_SESSION['savedValue']; } unset($_SESSION['savedValue']);  ?>" placeholder="..." onfocus="this.placeholder="" onblur="this.placeholder="..."/> PLN<br />
 					
 					Data:
-					<input type="text" name="expenseDate" placeholder="RRRR-MM-DD" onfocus="this.placeholder="" onblur="this.placeholder="RRRR-MM-DD"/> <br /> <!-- dodac aktualna date w placeholderze-->
+					<input type="text" name="expenseDate" value="<?php if (isset($_SESSION['savedDate'])) { echo $_SESSION['savedDate']; } unset($_SESSION['savedDate']);  ?>" placeholder="RRRR-MM-DD" onfocus="this.placeholder="" onblur="this.placeholder="RRRR-MM-DD"/> <br /> <!-- dodac aktualna date w placeholderze-->
 					
 					Sposób płatności:
 					<select name="paymentMeth" class="styled-select">
-						<option value="1">Gotówka</option>
-						<option value="2">Karta debetowa</option>
-						<option value="3">Karta kredytowa</option>
+						<?php
+											
+						if (isset($_SESSION['savedPayMeth']))
+						{
+							while($row = mysqli_fetch_array($resultPayMethods))
+							{
+								echo '<option value="'.$row['PayMetID'].'"';
+								if( $_SESSION['savedPayMeth'] == $row['PayMetID'])
+								{ 
+									echo ' selected ';
+								};
+								echo '>'.$row['Name'].'</option>';
+							}
+						} else {
+							while($row = mysqli_fetch_array($resultPayMethods))
+							{
+								echo '<option value=" '.$row['PayMetID'].' "> '.$row['Name'].' </option>';
+							}	
+						}	
+						unset($_SESSION['savedPayMeth']);		
+						?>
 					</select><br />
 					
 					Kategoria: 
 					<select name="cathegory" class="styled-select">
-						<option value="1">Jedzenie</option>
-						<option value="2">Mieszkanie</option>
-						<option value="3">Transport</option>
-						<option value="4">Telekomunikcja</option>
-						<option value="5">Opieka zdrowotna</option>
-						<option value="6">Ubranie</option>
-						<option value="7">Higiena</option>
-						<option value="8">Dzieci</option>
-						<option value="9">Rozrywka</option>
-						<option value="10">Wycieczka</option>
-						<option value="11">Szkolenia</option>
-						<option value="12">Książki</option>
-						<option value="12">Oszczędności</option>
-						<option value="13">Na emeryturę</option>
-						<option value="14">Spłata zadłużenia</option>
-						<option value="15">Darowizna</option>
-						<option value="16">Inne wydatki</option>
+						<?php
+						if (isset($_SESSION['savedCathegory']))
+						{
+							while($row = mysqli_fetch_array($resultCathegories))
+							{
+								echo '<option value="'.$row['CathegoryID'].'"';
+								if( $_SESSION['savedCathegory'] == $row['CathegoryID'])
+								{ 
+									echo ' selected ';
+								};
+								echo '>'.$row['Name'].'</option>';
+							}
+						} else {
+							while($row = mysqli_fetch_array($resultCathegories))
+							{
+								echo '<option value=" '.$row['CathegoryID'].' "> '.$row['Name'].' </option>';
+							}	
+						}
+						unset($_SESSION['savedCathegory']);		
+						?>
 					</select><br />
 					
 					Komentarz:
-					<input type="text" name="comment" placeholder="opcjonalny" onfocus="this.placeholder="" onblur="this.placeholder="opcjonalny"/> <br />
-
+					<input type="text" name="comment" value="<?php if (isset($_SESSION['savedComment'])) { echo $_SESSION['savedComment']; } unset($_SESSION['savedComment']);  ?>" placeholder="opcjonalny" onfocus="this.placeholder="" onblur="this.placeholder="opcjonalny"/> <br />
+					<?php
+					if(isset($_SESSION['e_addExpense']))
+					{
+						echo '<div class="error">'.$_SESSION['e_addExpense'].'</div>';
+						unset($_SESSION['e_addExpense']);
+					}
+					else	echo '<br />';
+					?>
 					<input type="submit" Value="Dodaj" name="addToExpenses"> <br />
 			
 				</form>

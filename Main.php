@@ -1,3 +1,15 @@
+<?php
+
+	session_start();
+			
+			
+	if(!isset($_SESSION['logged']))		
+	{
+		header('Location: budzet-domowy');
+		exit();
+	}
+?>
+
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
@@ -24,7 +36,14 @@
 	<div id="menu"></div>
 	
 	<div id="mainContainer">	
-		<div="content">
+		<div="content" style="padding-top: 50px;">
+			<?php
+				if(isset($_SESSION['e_main']))
+				{
+					echo '<div class="error">'.$_SESSION['e_main'].'</div>';
+					unset($_SESSION['e_main']);
+				}
+			?>
 		</div>
 	</div>
 	

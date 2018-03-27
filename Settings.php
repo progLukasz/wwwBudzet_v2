@@ -55,9 +55,9 @@
 		<div class="container-fluid">
 			<div id="content">
 				<div class="row">
-					<div id="editIncCathegories" class="subMenu col-xs-12 col-sm-4 col-md-2 col-md-offset-1">Edytuj kategorie przychodów</div>
-					<div id="editExpCathegories" class="subMenu col-xs-12 col-sm-4 col-md-2">Edytuj kategorie wydatków</div>
-					<div id="editExpPayMeths" class="subMenu col-xs-12 col-sm-4 col-md-2">Edytuj metody płatności</div>
+					<div id="editIncCathegories" class="subMenu col-xs-12 col-sm-4 col-md-2 col-md-offset-1">Kategorie przychodów</div>
+					<div id="editExpCathegories" class="subMenu col-xs-12 col-sm-4 col-md-2">Kategorie wydatków</div>
+					<div id="editExpPayMeths" class="subMenu col-xs-12 col-sm-4 col-md-2">Metody płatności</div>
 					<div id="delIncome" class="subMenu col-xs-12 col-sm-4 col-md-2">Usuń przychód</div>
 					<div id="delExpense" class="subMenu col-xs-12 col-sm-4 col-md-2">Usuń wydatek</div>
 					<div id="profileDetails" class="subMenu col-xs-12 col-sm-4 col-md-2">Edytuj dane profilowe</div>
