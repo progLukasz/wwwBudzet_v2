@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 13 Mar 2018, 15:37
+-- Czas generowania: 03 Kwi 2018, 21:27
 -- Wersja serwera: 10.1.26-MariaDB
 -- Wersja PHP: 7.1.8
 
@@ -130,14 +130,6 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Zrzut danych tabeli `users`
---
-
-INSERT INTO `users` (`UserID`, `Login`, `Email`, `Password`, `IsAdmin`, `Date`) VALUES
-(3, 'Osoba1', 'osoba1@wp.pl', '$2y$10$yitsj4dAY/uHu61xmSUVrOoFNtg4ycy1uCzfiCtIrPcp754lHlBKq', 'No', '2018-01-09 18:33:53'),
-(4, 'Osoba2', 'osoba2@o2.pl', '$2y$10$yitsj4dAY/uHu61xmSUVrOoFNtg4ycy1uCzfiCtIrPcp754lHlBKq', 'No', '2018-01-09 00:00:00');
-
---
 -- Indeksy dla zrzutów tabel
 --
 
@@ -185,27 +177,27 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT dla tabeli `expcathegories`
 --
 ALTER TABLE `expcathegories`
-  MODIFY `CathegoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `CathegoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT dla tabeli `expenses`
 --
 ALTER TABLE `expenses`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT dla tabeli `inccathegories`
 --
 ALTER TABLE `inccathegories`
-  MODIFY `CathegoryID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `CathegoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT dla tabeli `incomes`
 --
 ALTER TABLE `incomes`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT dla tabeli `paymentmethod`
 --
 ALTER TABLE `paymentmethod`
-  MODIFY `PayMetID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `PayMetID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT dla tabeli `users`
 --

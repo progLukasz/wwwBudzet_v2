@@ -13,7 +13,7 @@ RewriteRule edytuj-wydatki EditExpense.php
 RewriteRule wyswietl-bilans DisplayBalance.php
 RewriteRule wyswietl-podsumowanie DisplaySummary.php
 RewriteRule ustawienia-konta Settings.php
-RewriteRule wyloguj Logout.php
+RewriteRule wyloguj LogOut.php
 RewriteRule regulamin Terms.php
 RewriteRule konto-aktywowane AccountActivated.php
 RewriteRule poczekaj-prosze-na-maila WaitForEmail.php

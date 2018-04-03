@@ -86,7 +86,7 @@
 				unset($_SESSION['e_terms']);
 				}
 			?>
-			<div class="g-recaptcha" data-sitekey="6LdsfzoUAAAAAE1_Y4u0_prfFFYmxko2KqO2Kr12"></div> <br />
+			<div class="g-recaptcha" data-sitekey="6Lfru1AUAAAAALo8ccZjOVII3BLvgTovwlsdL9mg"></div>
 			<?php
 				if(isset($_SESSION['e_bot']))
 				{
