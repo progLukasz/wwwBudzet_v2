@@ -2,8 +2,16 @@
 
 body
 {
-	background-color:#303030;
+	background-color:#e2ffe9;
 }
+
+.navbar
+{
+	background-color:#303030;
+	font-family: 'Courgette', cursive; 
+	border-bottom: solid 2px #34a02c;
+}
+
 
 h3
 {
@@ -13,10 +21,7 @@ h3
 	margin-top: 0;
 }
 
-.navbar-nav>li>a
-{
-	font-family: 'Courgette', cursive; 
-}
+
 
 .subMenu
 {
@@ -28,6 +33,7 @@ h3
 	display: block;
 	text-decoration: none;
 	float: left;
+	border-bottom: solid 1px #34a02c;
 }
 
 .subMenu:hover
@@ -112,6 +118,7 @@ a
 {
 	background-color: #545454;
 	cursor: pointer;
+	color: #34a02c;
 }
 
 .mainMenu:active
@@ -137,6 +144,15 @@ a
 	border-top: 0px;
 }
 
+.greetingsInfo
+{
+	text-align: center;
+	font-family: 'Courgette', cursive;
+	font-size: 24px;
+	color: green;
+}
+
+
 
 
 
@@ -151,17 +167,6 @@ a
 	width: 810px;
 }
 
-/* *******************Main Page********************* */
-
-.greetingsInfo
-{
-	text-align: center;
-	font-family: 'Courgette', cursive;
-	padding-top: 30px;
-	font-size: 32px;
-	color: red;
-	padding-top: 50px;
-}
 
 
 /* *******************Logging********************* */
@@ -274,8 +279,6 @@ a
 
 .message
 {
-	padding-top: 10px;
-	min-height: 26px;
 	text-align: center;
 }
 
@@ -323,6 +326,7 @@ input[type=submit],
 	letter-spacing: 2px;
 	outline: none;
 	transition: transform .2s ease-in-out;
+	text-decoration: none;
 }
 
 input[type=submit]:focus,
@@ -331,12 +335,17 @@ input[type=submit]:focus,
 	-webkit-transform: scale(0.95);
 	-ms-transform: scale(0.95);
 	transform: scale(0.95);
+	text-decoration: none;
+	color: white;
+	
 }
 
 input[type=submit]:hover,
 .buttons:hover
 {
 	background-color: #37b93d;
+	text-decoration: none;
+	color: white;
 }
 
 input::-webkit-input-placeholder

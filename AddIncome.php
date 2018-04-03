@@ -104,9 +104,17 @@
 					}
 					else	echo '<br />';
 					?>
-					<input type="submit" Value="Dodaj" name="addToIncomes"> <br />
-					
+					<input type="submit" Value="Dodaj" name="addToIncomes">
+					<a href="kontroluj-swoje-wydatki" class="buttons"> Cancel </a>
 				</form>
+				<?php
+					if(isset($_SESSION['e_main']))
+					{
+						echo "<div class='message'>".$_SESSION['e_main']."</div>";
+						unset($_SESSION['e_main']);
+					}
+					else	echo '<br />';
+					?>
 			</div>
 		</div>
 	</div>

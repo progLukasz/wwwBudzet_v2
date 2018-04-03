@@ -21,7 +21,7 @@
 				{
 					$result = $connection->query($query);	
 					$connection->close();
-					$_SESSION['e_main'] = '<span class="greetingsInfo">Wpis został dodany do bazy danych.</span>';
+					$_SESSION['e_main'] = '<span class="greetingsInfo">Operacja przeprowadzona prawidłowo.</span>';
 					$_SESSION['backToMain'] = true;
 					header('Location: kontroluj-swoje-wydatki');
 					exit();

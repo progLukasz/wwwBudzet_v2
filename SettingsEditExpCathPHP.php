@@ -9,11 +9,11 @@
 	$proceed = true;
 	$userID = $_SESSION['userId'];
 	
-	if(isset($_POST['addIncCath']))
+	if(isset($_POST['addExpCath']))
 	{
-		$cathName = $_POST['addIncCath'];
+		$cathName = $_POST['addExpCath'];
 		
-		$result = $connection->query("SELECT * FROM inccathegories WHERE Name = '$cathName' AND UserID = '$userID' ");
+		$result = $connection->query("SELECT * FROM expcathegories WHERE Name = '$cathName' AND UserID = '$userID' ");
 		
 		if ($result->num_rows > 0)
 		{
@@ -25,14 +25,14 @@
 			$proceed = false;
 		} else {
 			$userID = $_SESSION['userId'];
-			$query = "INSERT INTO inccathegories (CathegoryID, Name, UserID) VALUES (NULL, '$cathName', '$userID')";
+			$query = "INSERT INTO expcathegories (CathegoryID, Name, UserID) VALUES (NULL, '$cathName', '$userID')";
 		}
 	}
-	else if(isset($_POST['changeIncOld']))
+	else if(isset($_POST['changeExpOld']))
 	{
-		$cathNameID = $_POST['changeIncOld'];
-		$cathNameNew = $_POST['changeIncNew'];
-		$result = $connection->query("SELECT * FROM inccathegories WHERE Name = '$cathNameNew' AND UserID = '$userID' ");
+		$cathNameID = $_POST['changeExpOld'];
+		$cathNameNew = $_POST['changeExpNew'];
+		$result = $connection->query("SELECT * FROM expcathegories WHERE Name = '$cathNameNew' AND UserID = '$userID' ");
 		
 		if ($result->num_rows > 0)
 		{
@@ -46,14 +46,14 @@
 			echo '<div class="error">'."Nie wybrano kategorii z listy".'</div>';
 			$proceed = false;
 		} else {
-			$query = "UPDATE inccathegories SET Name = '$cathNameNew' WHERE CathegoryID = '$cathNameID'";
+			$query = "UPDATE expcathegories SET Name = '$cathNameNew' WHERE CathegoryID = '$cathNameID'";
 		}		
 	}
-	else if(isset($_POST['deleteIncCath']))
+	else if(isset($_POST['deleteExpCath']))
 	{
-		$cathNameID = $_POST['deleteIncCath'];
+		$cathNameID = $_POST['deleteExpCath'];
 		
-		$result = $connection->query("SELECT * FROM incomes WHERE CathegoryID = '$cathNameID' UserID = '$userID' ");
+		$result = $connection->query("SELECT * FROM expenses WHERE CathegoryID = '$cathNameID' UserID = '$userID' ");
 		if($result->num_rows > 0)
 		{
 			echo '<div class="error">'."Nie można usunąć danej kategorii, gdyż jest ona przypisana do co najmniej jednego wpisu.".'</div>';
@@ -64,7 +64,7 @@
 				echo '<div class="error">'."Nie wybrano kategorii do usunięcia".'</div>';
 				$proceed = false;
 			} else {
-				$query = "DELETE FROM inccathegories WHERE CathegoryID = '$cathNameID'";
+				$query = "DELETE FROM expcathegories WHERE CathegoryID = '$cathNameID'";
 			}
 		}
 		$connection->close();

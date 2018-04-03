@@ -18,7 +18,7 @@
 	if ($sortedBy == 'selectedDate' AND ($startDate == '' OR $endDate == '' OR $startDate > $endDate OR !validateDate($startDate, 'Y-m-d') OR  !validateDate($endDate, 'Y-m-d')) )
 	{
 		$_SESSION['e_selectedDate'] = "Wprowadzono zły przedział czasowy";
-		header('Location: DisplayBalance-SelectedDate.php');
+		header('Location: DisplayBalance-SelectDate.php');
 		exit();
 	}
 		

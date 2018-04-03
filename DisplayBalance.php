@@ -15,40 +15,10 @@
 	<script src="js/Chart.js"></script>
 	<script src="js/script.js"></script>
 	<script type="text/javascript">
-	
-	var d = new Date();
-	var month = d.getMonth()+1;
-	var day = d.getDate();
-	var year = d.getFullYear();
-		
-	if(month == 1) {
-		var prevMonth = 12;
-		var prevYear = year - 1;
-	} else {
-		var prevMonth = month - 1;
-		var prevYear = year;
-	};
-	
 	$(document).ready(function() {
-		$("#menu").load( "menu.html" );
-		
-		$('#thisMonthBal').click(function(){
-			requestData('thisMonth', year + '-' + month + '-01', year + '-' + month + '-' + day);
+			$("#menu").load( "menu.html" );
+			$("#subMenu").load("submenu_balance.html");
 		});
-		$('#lastMonthBal').click(function(){
-			requestData('lastMonth', prevYear + '-' + prevMonth + '-01', prevYear + '-' + prevMonth + '-31');
-		});
-		$('#thisYearBal').click(function(){
-			requestData('thisYear', year + '-01-01', year + '-' + month + '-' + day);
-		});
-		$('#selectedDateBal').click(function() {
-			$('#rowContent').load('DisplayBalance-SelectDate.php');
-		});
-		$('#fullBalance').click(function(){
-			requestData('full', '0000-00-00', year + '-' + month + '-' + day);
-		});	
-	});
-	
 	</script>
 </head>
 
@@ -58,14 +28,7 @@
 	<div style="max-width: 1200px; margin-top: 130px; margin-left: auto; margin-right: auto; padding: 10px;">
 		<div class="container-fluid">
 			<div id="content">
-				<div class="row">
-					<div class="subMenu col-xs-0 col-sm-0 col-md-1"></div>
-					<div id="thisMonthBal" class="subMenu col-xs-12 col-sm-4 col-md-2 col-md-offset-1">Bieżący miesiąc</div>
-					<div id="lastMonthBal" class="subMenu col-xs-12 col-sm-4 col-md-2">Poprzedni miesiąc</div>
-					<div id="thisYearBal" class="subMenu col-xs-12 col-sm-4 col-md-2">Bieżący rok</div>
-					<div id="selectedDateBal" class="subMenu col-xs-12 col-sm-4 col-md-2">Z wybranego okresu</div>
-					<div id="fullBalance" class="subMenu col-xs-12 col-sm-4 col-md-2">Wszystko</div>
-				</div>
+				<div id="subMenu"></div>
 				<div id="rowContent" class="row">	
 				</div>
 			</div>	
