@@ -48,11 +48,20 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/fontello.css" rel="stylesheet" type="text/css" />
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="/resources/demos/style.css">
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link href="css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/style.css" text/css" />
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#menu").load( "menu.html" );
+			
+			$( function() {
+				$("#datepicker").datepicker({
+					dateFormat: "yy-mm-dd"
+				});
+			});
 		});
 	</script>
 </head>
@@ -68,7 +77,7 @@
 					<input type="text" name="value" value="<?php if (isset($_SESSION['savedValue'])) { echo $_SESSION['savedValue']; } unset($_SESSION['savedValue']);  ?>" placeholder="..." onfocus="this.placeholder="" onblur="this.placeholder="..."/> PLN<br />
 					
 					Data:
-					<input type="text" name="expenseDate" value="<?php if (isset($_SESSION['savedDate'])) { echo $_SESSION['savedDate']; } unset($_SESSION['savedDate']);  ?>" placeholder="RRRR-MM-DD" onfocus="this.placeholder="" onblur="this.placeholder="RRRR-MM-DD"/> <br /> <!--wstawic tutaj dzisiejsza date - js -->
+					<input type="text" id="datepicker" name="expenseDate" value="<?php if (isset($_SESSION['savedDate'])) { echo $_SESSION['savedDate']; } unset($_SESSION['savedDate']);  ?>" placeholder="RRRR-MM-DD" onfocus="this.placeholder="" onblur="this.placeholder="RRRR-MM-DD"/> <br /> <!--wstawic tutaj dzisiejsza date - js -->
 					
 					Kategoria: 
 					<select name="cathegory" class="styled-select">

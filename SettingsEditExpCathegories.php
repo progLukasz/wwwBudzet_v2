@@ -45,51 +45,43 @@
 <body >
 	<script>
 	
-	//var added;
-	
 	$(document).ready(function() {
 		
 		$("#addCathegory").click(function() {
 			var expCathegory = $("#expCathNew").val();
-			$("#messageAdd").load("SettingsEditExpCathPHP.php", {addExpCath: expCathegory}, function() {
-
-			}
-			);
+			$("#messageAdd").load("SettingsEditExpCathPHP.php", {
+				addExpCath: expCathegory
+			});
 			
 		});
 		
 		$("#editCathegory").click(function() {
 			var expCathegory = $('.cathegoryEdit').find(":selected").val();
 			var expCathegoryNew = $("#expCathEdit").val();
-			$("#messageEdit").load("SettingsEditExpCathPHP.php", {changeExpOld: expCathegory, changeExpNew: expCathegoryNew});	
+			$("#messageEdit").load("SettingsEditExpCathPHP.php", {
+				changeExpOld: expCathegory, changeExpNew: expCathegoryNew
+			});	
 		});	
 			
 		$("#deleteCathegory").click(function() {
 			var expCathegory = $(".cathegoryDelete").find(":selected").val();
-			$("#messageDelete").load("SettingsEditExpCathPHP.php", {deleteExpCath: expCathegory});	
-		});	
-		
-		//if (added == true)
-		//{
-		//$("#messageAdd").append("<span class='greetingsInfo'>Operacja przeprowadzona prawidłowo.</span>");
-		//added = false;
-		//}
-
-		
+			$("#messageDelete").load("SettingsEditExpCathPHP.php", {
+				deleteExpCath: expCathegory
+			});	
+		});			
 	});
 	</script>
 	<div style="max-width: 1200px; margin-top: 40px; margin-left: auto; margin-right: auto; padding: 10px;">
 		<div class="container-fluid">
-			<div class="content">
-				
-				<div id="newExpCathegory" class="settings">
-					<div style="text-align:center;">Dodaj nową kategorię wydatków</div><br />
-					<span style="font-size: 14px;">Nazwa nowej kategorii:</span>
-					<input type="text" id="expCathNew" placeholder="nowa kategoria" onfocus="this.placeholder=' '" onblur="this.placeholder='nowa kategoria'"/>
-					<button id="addCathegory" class="buttons" style="margin-left: 100px;">Dodaj</button>
-					<div id="messageAdd" class="message"></div>
+			<div class="container">
+					<div id="newExpCathegory" class="settings">
+						<div style="text-align:center;">Dodaj nową kategorię wydatków</div><br />
+						<span style="font-size: 14px;">Nazwa nowej kategorii:</span>
+						<input type="text" id="expCathNew" placeholder="nowa kategoria" onfocus="this.placeholder=' '" onblur="this.placeholder='nowa kategoria'"/>
+						<button id="addCathegory" class="buttons" style="margin-left: 100px;">Dodaj</button>
+						<div id="messageAdd" class="message"></div>
+					</div>
 				</div><br /> <br />
-			
 				<div id="editExpCathegory" class="settings">
 					<div style="text-align:center;">Zmień nazwę kategorii</div><br />
 					<span style="font-size: 14px;">Wybierz kategorię:</span>

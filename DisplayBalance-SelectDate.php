@@ -2,7 +2,9 @@
 	session_start();
 ?>
 <head>
-
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="/resources/demos/style.css">
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script type="text/javascript">
 
 	$(document).ready(function() {
@@ -13,6 +15,17 @@
 			var endDate = $('#endDateText').val();
 			requestData('selectedDate', startDate, endDate);
 		});
+		
+		$( function() {
+			$("#startDateText").datepicker({
+				dateFormat: "yy-mm-dd"
+			});
+		});
+		$( function() {
+			$("#endDateText").datepicker({
+				dateFormat: "yy-mm-dd"
+			});	
+		});			
 	
 	});
 		

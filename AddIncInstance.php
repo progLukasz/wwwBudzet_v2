@@ -52,7 +52,7 @@
 		}
 		
 		$comment = $_POST['comment'];
-		
+		$userID = $_SESSION['userId'];
 		if($valid == true) {
 			
 			require_once "Connect.php";

@@ -7,9 +7,9 @@ body
 
 .navbar
 {
-	background-color:#303030;
+	background-color:#34a02c;
 	font-family: 'Courgette', cursive; 
-	border-bottom: solid 2px #34a02c;
+	border-bottom: solid 0px #303030;
 }
 
 
@@ -17,7 +17,7 @@ h3
 {
 	font-family: 'Courgette', cursive; 
 	letter-spacing: 2px;
-	color: #34a02c;
+	color: #303030;
 	margin-top: 0;
 }
 
@@ -97,10 +97,17 @@ a
 	text-decoration: none;
 }
 
+.nav.navbar-nav.navbar-right li a {
+    color: #303030;
+}
+
+.nav.navbar-nav.navbar-right li a:hover {
+    color: #b0b1b2;
+}
+
 .mainMenu
 {
 	font-family: 'Courgette', cursive;
-	color: #34a02c;
 	height: 50px;
 	padding: 10px;
 	margin: 00px 10px 0px 20px;
@@ -118,7 +125,6 @@ a
 {
 	background-color: #545454;
 	cursor: pointer;
-	color: #34a02c;
 }
 
 .mainMenu:active

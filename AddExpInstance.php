@@ -52,13 +52,14 @@
 		{
 			displayError("Nie podano daty");
 		}
-		
+
 		if(!validateDate($date, 'Y-m-d'))
 		{
-			displayError("Podana data jest niepoprawna");
+			displayError("Podana data jest niepoprawna".$date);
 		}
 		
 		$comment = $_POST['comment'];
+		$userID = $_SESSION['userId'];
 		
 		if($valid == true) {
 			
