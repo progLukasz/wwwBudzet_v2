@@ -21,7 +21,14 @@ h3
 	margin-top: 0;
 }
 
-
+#info
+{
+	font-family: 'Courgette', cursive;
+	width:100%;
+	text-align: center;
+	color: #34a02c;
+	border-top: solid 1px #34a02c;
+}
 
 .subMenu
 {
@@ -42,15 +49,10 @@ h3
 	cursor: pointer;
 }
 
-.subMenu:active
-{
-	background-color: #4e634f;
-}
-
 .subMenuActive
 {
-	font-family: 'Courgette', cursive;
-	color: #34a02c;
+	font-family: 'Courgette', bold;
+	color: #4e634f;
 	height: 30px;
 	padding: 10px;
 	margin: 00px 10px 0px 40px;
@@ -104,6 +106,18 @@ a
 .nav.navbar-nav.navbar-right li a:hover {
     color: #b0b1b2;
 }
+
+.title
+{
+	text-align: center;
+	font-family: 'Courgette', cursive;
+	font-size: 32px;
+	color: #303030;
+	padding-top: 50px;
+	line-height: 1.5;
+}
+
+
 
 .mainMenu
 {
@@ -161,10 +175,6 @@ a
 
 
 
-
-
-
-
 #mainPage
 {
 	float: left;
@@ -211,12 +221,7 @@ a
 	float: left;
 }
 
-#info
-{
-	width:100%;
-	text-align: center;
-	background-color: #191d21;
-}
+
 
 .error
 {
@@ -248,7 +253,6 @@ a
 	font-family: 'Courgette', cursive;
 	font-size: 32px;
 	color: #34a02c;
-	padding-top: 50px;
 	line-height: 1.5;
 }
 

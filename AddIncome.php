@@ -71,6 +71,7 @@
 	<div style="max-width: 1200px; margin-top: 40px; margin-left: auto; margin-right: auto; padding: 10px;">
 		<div class="container-fluid">
 			<div class="content">
+				<div class="title">Dodaj przychód</div>
 				<form class="formEdit" action="AddIncInstance.php" method="post" accept-charset="character_set">
 				
 					Kwota:
@@ -127,16 +128,8 @@
 			</div>
 		</div>
 	</div>
-	
 	<footer>
-		<div id="info">
-		
-		</div>
-	
+		<div id="info"> 2018 &copy; Łukasz Wojciech - Budżet Domowy. lukasz.wojciech.programista@gmail.com</div>
 	</footer>
-	
-	
-	
 </body>
-
 </html>

@@ -29,9 +29,10 @@
 
 <body>
 	<div id="menu"></div>
-	<div style="max-width: 1200px; margin-top: 130px; margin-left: auto; margin-right: auto; padding: 10px;">
+	<div style="max-width: 1200px; min-height:800px; margin-top: 40px; margin-left: auto; margin-right: auto; padding: 10px;">
 		<div class="container-fluid">
 			<div id="content">
+				<div class="title">Ustawienia</div>
 				<div id="submenu"></div>
 				<div id="settingsContent" class="row">	
 				</div>
@@ -39,14 +40,8 @@
 		</div>
 	</div>
 	<footer>
-		<div id="info">
-		
-		</div>
-	
+		<div id="info"> 2018 &copy; Łukasz Wojciech - Budżet Domowy. lukasz.wojciech.programista@gmail.com</div>
 	</footer>
-	
-	
-	
-</body>
 
+</body>
 </html>

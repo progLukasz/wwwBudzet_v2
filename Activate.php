@@ -19,8 +19,8 @@
 				}
 				else
 				{
-					$result1 = $connection->query("SELECT * FROM unactivatedusers WHERE Token = '$token'");
-					$row = $result1->fetch_assoc();
+					$resultUnactiveUser = $connection->query("SELECT * FROM unactivatedusers WHERE Token = '$token'");
+					$row = $resultUnactiveUser->fetch_assoc();
 					$Login = $row['Login'];
 					$Email = $row['Email'];
 					$Pass = $row['Password'];
@@ -28,6 +28,12 @@
 					if($connection->query("INSERT INTO users (UserID, Login, Email, Password, IsAdmin, Date) VALUES (NULL, '$Login', '$Email', '$Pass', 'No', NULL) "))
 					{
 						$connection->query("DELETE FROM unactivatedusers WHERE Token = '$token' ");
+						$resultUserID = $connection->query("SELECT UserID FROM users WHERE Login = '$Login'");
+						$row = $resultUserID->fetch_assoc();
+						$UserID = $row['UserID'];
+						$connection->query("INSERT INTO inccathegories (CathegoryID, Name, UserID) VALUES (NULL, 'Wynagrodzenie', '$UserID'), (NULL, 'Odsetki bankowe', '$UserID'), (NULL, 'Sprzedaż na allegro', '$UserID'), (NULL, 'Inne', '$UserID')");
+						$connection->query("INSERT INTO expcathegories (CathegoryID, Name, UserID) VALUES (NULL, 'Jedzenie', '$UserID'), (NULL, 'Mieszkanie', '$UserID'), (NULL, 'Transport', '$UserID'), (NULL, 'Telekomunikacja', '$UserID'), (NULL, 'Opeka zdrowotna', '$UserID'), (NULL, 'Ubranie', '$UserID'), (NULL, 'Higiena', '$UserID'), (NULL, 'Dzieci', '$UserID'), (NULL, 'Rozrywka', '$UserID'), (NULL, 'Wycieczka', '$UserID'), (NULL, 'Szkolenia', '$UserID'), (NULL, 'Inne', '$UserID')");
+						$connection->query("INSERT INTO paymentmethod (PayMetID, Name, UserID) VALUES (NULL, 'Gotówka', '$UserID'), (NULL, 'Karta debetowa', '$UserID'), (NULL, 'Karta kredytowa', '$UserID')");
 					}
 					else
 					{

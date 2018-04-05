@@ -59,7 +59,7 @@
 </head>
 
 <body>
-
+	<div class="title"><h3>Usuń niepoprawne wydatki</h3></div>
 	<form id="formExpenses" name="form" method="post" action="confirm.php" style="padding-top: 20px;">
 		<div class="table-responsive-sm">
 			<table class="table table-sm" id='expTable'>

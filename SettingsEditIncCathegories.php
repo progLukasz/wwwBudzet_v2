@@ -70,6 +70,7 @@
 			
 	});
 	</script>
+	<div class="title"><h3>Edytuj kategorie przychodów</h3></div>
 	<div style="max-width: 1200px; margin-top: 40px; margin-left: auto; margin-right: auto; padding: 10px;">
 		<div class="container-fluid">
 			<div class="content">

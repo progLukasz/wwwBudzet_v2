@@ -53,6 +53,7 @@
 ?>
 
 <body>
+	<div class="title"><h3>Zestawienie danych z okresu od <?php echo $startDate; ?> do <?php echo $endDate; ?> </h3></div>
 	<div style="max-width: 1200px; margin-top: 130px; margin-left: auto; margin-right: auto; padding: 10px;">
 		<div class="container-fluid">
 			<div id="content">

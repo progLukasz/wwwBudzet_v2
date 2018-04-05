@@ -41,6 +41,10 @@
 		{
 			displayError("Podana kwota nie jest wartością liczbową");
 		}
+		if (($cost < 1))
+		{
+			displayError("Podana kwota nie może być mniejsza ani równa zero");
+		}
 		
 		$payMeth = $_POST['paymentMeth'];
 		

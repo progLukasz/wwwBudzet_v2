@@ -44,12 +44,7 @@
 	
 	
 	<footer style="clear:both;">
-		<div id="info">
-		
-		</div>
-	
-	</footer>
-		
+		<div id="info"> 2018 &copy; Łukasz Wojciech - Budżet Domowy. lukasz.wojciech.programista@gmail.com</div>
+	</footer>	
 </body>
-
 </html>

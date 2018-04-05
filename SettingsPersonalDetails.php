@@ -41,7 +41,7 @@
 </head>
 
 <body>
-	<div class="settings" style="text-align: center; padding-top: 0px;"><h3>Ustawienia profilu<h3></div> <br />
+	<div class="title"><h3>Edytuj dane profilowe</h3></div>
 		<div id="setLogin" class="settings">
 			<span style="margin-left: 350px;">Zmień login</span><br />
 			Podaj nowy login:

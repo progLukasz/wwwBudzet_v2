@@ -34,7 +34,7 @@
 
 <body>
 	<div id="menu"></div>
-	<div style="max-width: 1200px; margin-top: 130px; margin-left: auto; margin-right: auto; padding: 10px;">
+	<div style="max-width: 1200px; min-height: 800px; margin-top: 130px; margin-left: auto; margin-right: auto; padding: 10px;">
 		<div class="container-fluid">
 			<div id="content">
 				<div id="rowContent" class="row">
@@ -58,13 +58,6 @@
 				
 			</div>
 		</div>
-	<footer>
-		<div id="info">
-		
-		</div>
-	
-	</footer>		
-	
+	</div>	
 </body>
-
 </html>
