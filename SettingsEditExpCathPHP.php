@@ -3,6 +3,7 @@
 	session_start();
 	
 	require_once "Connect.php";
+	include "phpFunctions.php";
 	mysqli_report(MYSQLI_REPORT_STRICT);
 	$connection = new mysqli($host, $db_user, $db_password, $db_name);
 	
@@ -13,17 +14,27 @@
 	{
 		$cathName = $_POST['addExpCath'];
 		
-		$result = $connection->query("SELECT * FROM expcathegories WHERE Name = '$cathName' AND UserID = '$userID' ");
+		$result = $connection->query("SELECT Name FROM expcathegories WHERE UserID = '$userID' ");
 		
-		if ($result->num_rows > 0)
-		{
-			echo '<div class="error">'."Dana nazwa kategorii już istnieje".'</div>';
-			$proceed = false;
-		} else if(strlen($cathName)<1)
+		if(strlen($cathName)<1)
 		{
 			echo '<div class="error">'."Nie podano nazwy nowej kategorii".'</div>';
 			$proceed = false;
-		} else {
+		} elseif ($result->num_rows > 0)
+		{
+			while($row = mysqli_fetch_assoc($result)) {
+				$cmpResult = compareStrings($cathName, $row['Name']);
+				if ($cmpResult == 0)
+				{
+					echo '<div class="error">'."Dana nazwa kategorii już istnieje".'</div>';
+					$proceed = false;
+					break;
+				}
+			}
+		} 
+		
+		if ($proceed == true)
+		{
 			$userID = $_SESSION['userId'];
 			$query = "INSERT INTO expcathegories (CathegoryID, Name, UserID) VALUES (NULL, '$cathName', '$userID')";
 		}

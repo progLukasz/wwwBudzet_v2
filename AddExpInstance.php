@@ -31,10 +31,6 @@
 		if(strlen($cost)<1)
 		{
 			displayError("Nie podano kwoty wydatku");
-			$valid = false;
-			$_SESSION['e_addExpense'] = "Nie podano kwoty wydatku";
-			header('Location: dodaj-wydatki');
-			exit();
 		}
 		
 		if(!is_numeric($cost))

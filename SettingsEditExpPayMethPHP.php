@@ -3,6 +3,7 @@
 	session_start();
 	
 	require_once "Connect.php";
+	include "phpFunctions.php";
 	mysqli_report(MYSQLI_REPORT_STRICT);
 	$connection = new mysqli($host, $db_user, $db_password, $db_name);
 	
@@ -13,17 +14,27 @@
 	{
 		$payMethName = $_POST['addExpPayMeth'];
 		
-		$result = $connection->query("SELECT * FROM paymentmethod WHERE Name = '$payMethName' AND UserID = '$userID' ");
+		$result = $connection->query("SELECT Name FROM paymentmethod WHERE UserID = '$userID' ");
 		
-		if ($result->num_rows > 0)
-		{
-			echo '<div class="error">'."Dany sposób płatności już istnieje".'</div>';
-			$proceed = false;
-		} else if(strlen($payMethName)<1)
+		if(strlen($payMethName)<1)
 		{
 			echo '<div class="error">'."Nie podano nazwy nowego sposobu płatności".'</div>';
 			$proceed = false;
-		} else {
+		} elseif ($result->num_rows > 0)
+		{
+			while($row = mysqli_fetch_assoc($result)) {
+				$cmpResult = compareStrings($payMethName, $row['Name']);
+				if ($cmpResult == 0)
+				{
+					echo '<div class="error">'."Dana nazwa metody płatności już istnieje".'</div>';
+					$proceed = false;
+					break;
+				}
+			}
+		}
+			
+		if ($proceed == true)
+		{
 			$userID = $_SESSION['userId'];
 			$query = "INSERT INTO paymentmethod (PayMetID, Name, UserID) VALUES (NULL, '$payMethName', '$userID')";
 		}

@@ -52,6 +52,7 @@
 		}	
 		
 		$hashedPass = password_hash($password1, PASSWORD_DEFAULT);
+
 		
 		if(!isset($_POST['terms']))
 		{
